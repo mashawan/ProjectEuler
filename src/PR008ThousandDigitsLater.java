@@ -27,8 +27,6 @@ public class PR008ThousandDigitsLater
 
 	public static void main(String[] args)
 	{
-		final long start = System.currentTimeMillis();
-		
 		long maxProductEncountered = 0;
 		for (int i = 0; i <= THE_DIGITS.length - NUMBER_ADJECENT_DIGITS; i++)
 		{
@@ -38,10 +36,7 @@ public class PR008ThousandDigitsLater
 				maxProductEncountered = product;
 			}
 		}
-
-		final long end = System.currentTimeMillis();
-		final long duration = end - start;
-		System.out.println("The largest product is: " + maxProductEncountered + " (" + duration + " millis).");
+		System.out.println("The largest product is: " + maxProductEncountered + ".");
 	}
 
 	private static long calculateProduct(int startIndex)
