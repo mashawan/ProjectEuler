@@ -15,37 +15,26 @@ public class PR009MontyPythagoreanTriplet
 	public static void main(String[] args)
 	{
 		long start = System.currentTimeMillis();
-		
-		int aCandidate = 0;
-		int bCandidate = 0;
-		int cCandidate = 0;
 
-		while(!isSpecialPythagoreanTriplet(aCandidate, bCandidate, cCandidate))
+		final int loops = 500;
+		for (int a = 0; a < loops; a++)
 		{
-			Random random = new Random();
+			for (int b = a + 1; b < loops; b++)
+			{
+				int c = 1000 - (a + b);
 
-			aCandidate = random.nextInt(500);
-			
-			bCandidate = random.nextInt(500);
-			if (bCandidate < aCandidate)
-			{
-				bCandidate = random.nextInt(500);
-			}
-			
-			cCandidate = random.nextInt(500);
-			if (cCandidate < bCandidate)
-			{
-				cCandidate = random.nextInt(500);
+				if (isSpecialPythagoreanTriplet(a, b, c))
+				{
+					final int product = a * b * c;
+
+					long end = System.currentTimeMillis();
+					long duration = end - start;
+					System.out.println("Took " + duration + " millis.");
+					System.out.println("The product of " + a + " + " + b + " + " + c + " = " + product);
+					return;
+				}
 			}
 		}
-		
-		final int product = aCandidate * bCandidate * cCandidate;
-		
-		long end = System.currentTimeMillis();
-		long duration = end - start;
-		System.out.println("Took " + duration + " millis.");
-		
-		System.out.println("The product of " + aCandidate + " + " + bCandidate + " + " + cCandidate + " = " + product);
 	}
 
 	private static boolean isSpecialPythagoreanTriplet(int aCandidate, int bCandidate, int cCandidate)
