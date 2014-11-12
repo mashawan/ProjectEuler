@@ -42,7 +42,7 @@ public class PR009MontyPythagoreanTriplet
 		long a2 = aCandidate * aCandidate;
 		long b2 = bCandidate * bCandidate;
 		long c2 = cCandidate * cCandidate;
-		
+
 		if (a2 + b2 == c2)
 		{
 			int specialNumber = 1000;
