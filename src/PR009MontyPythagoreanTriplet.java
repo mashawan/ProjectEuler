@@ -17,7 +17,7 @@ public class PR009MontyPythagoreanTriplet
 		final int lowestNumberToTry = 1;
 		final int loops = (SPECIAL_TOTAL / 2) - lowestNumberToTry;
 		
-		for (int a = 1; a < loops; a++)
+		for (int a = lowestNumberToTry; a < loops; a++)
 		{
 			for (int b = a + 1; b < loops; b++)
 			{
