@@ -1,5 +1,3 @@
-import java.util.Random;
-
 /*
  * A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
  * a(2) + b(2) = c(2)
@@ -12,32 +10,30 @@ import java.util.Random;
  */
 public class PR009MontyPythagoreanTriplet
 {
+	private static final int SPECIAL_TOTAL = 1000;
+
 	public static void main(String[] args)
 	{
-		long start = System.currentTimeMillis();
-
-		final int loops = 500;
-		for (int a = 0; a < loops; a++)
+		final int lowestNumberToTry = 1;
+		final int loops = (SPECIAL_TOTAL / 2) - lowestNumberToTry;
+		
+		for (int a = 1; a < loops; a++)
 		{
 			for (int b = a + 1; b < loops; b++)
 			{
-				int c = 1000 - (a + b);
+				final int specialC = SPECIAL_TOTAL - (a + b);
 
-				if (isSpecialPythagoreanTriplet(a, b, c))
+				if (isPythagoreanTriplet(a, b, specialC))
 				{
-					final int product = a * b * c;
-
-					long end = System.currentTimeMillis();
-					long duration = end - start;
-					System.out.println("Took " + duration + " millis.");
-					System.out.println("The product of " + a + " + " + b + " + " + c + " = " + product);
+					final int product = a * b * specialC;
+					System.out.println("The product of " + a + " + " + b + " + " + specialC + " = " + product);
 					return;
 				}
 			}
 		}
 	}
 
-	private static boolean isSpecialPythagoreanTriplet(int aCandidate, int bCandidate, int cCandidate)
+	private static boolean isPythagoreanTriplet(int aCandidate, int bCandidate, int cCandidate)
 	{
 		long a2 = aCandidate * aCandidate;
 		long b2 = bCandidate * bCandidate;
@@ -45,11 +41,7 @@ public class PR009MontyPythagoreanTriplet
 
 		if (a2 + b2 == c2)
 		{
-			int specialNumber = 1000;
-			if (aCandidate + bCandidate + cCandidate == specialNumber)
-			{
-				return true;
-			}
+			return true;
 		}
 		return false;
 	}
