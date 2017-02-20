@@ -21,6 +21,7 @@ public class Problem2
                 .limit(1000);
 
         numbers.forEach(System.out::println);
+
     }
 
     private static long nextNumber()
