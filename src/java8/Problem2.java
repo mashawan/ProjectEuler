@@ -11,8 +11,23 @@ import java.util.stream.Stream;
  */
 public class Problem2
 {
+    private static long x = -1;
+    private static long y = 1;
+
     public static void main(String[] args)
     {
-//
+        final Stream<Long> numbers = Stream.generate(Problem2::nextNumber)
+                .skip(2)
+                .limit(1000);
+
+        numbers.forEach(System.out::println);
+    }
+
+    private static long nextNumber()
+    {
+        long result = x + y;
+        x = y;
+        y = result;
+        return result;
     }
 }
