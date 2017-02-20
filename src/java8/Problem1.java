@@ -18,7 +18,7 @@ public class Problem1
 
     public static void main(String[] args)
     {
-        final Stream<Integer> numbers = generateNumbers();
+        final Stream<Integer> numbers = Stream.generate(() -> firstNumber++).limit(lastNumber);
         final List<Integer> criteria = Lists.newArrayList(3,5);
 
         final int result = numbers
@@ -35,11 +35,5 @@ public class Problem1
                 .filter(criteria -> number % criteria == 0)
                 .findAny()
                 .isPresent();
-    }
-
-    private static Stream<Integer> generateNumbers()
-    {
-        return Stream.generate(() -> firstNumber++)
-                .limit(lastNumber);
     }
 }
