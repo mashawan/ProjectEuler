@@ -20,7 +20,6 @@ public class Problem2
                 .skip(2)
                 .limit(1000);
 
-
         numbers.forEach(System.out::println);
     }
 
