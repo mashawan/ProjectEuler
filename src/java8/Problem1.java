@@ -26,10 +26,10 @@ public class Problem1
         System.out.println("The sum is " + result);
     }
 
-    private static boolean isMultipleOfAnyCriteria(Integer i, List<Integer> criteria)
+    private static boolean isMultipleOfAnyCriteria(Integer number, List<Integer> allCriteria)
     {
-        return criteria.stream()
-                .filter(c -> i % c == 0)
+        return allCriteria.stream()
+                .filter(criteria -> number % criteria == 0)
                 .findAny()
                 .isPresent();
     }
