@@ -18,7 +18,7 @@ public class Problem1
 
     public static void main(String[] args)
     {
-        final Stream<Integer> numbers = Stream.generate(() -> firstNumber++).limit(lastNumber);
+        final Stream<Integer> numbers = Stream.generate(() -> firstNumber++).limit(lastNumber - 1);
         final List<Integer> criteria = Lists.newArrayList(3, 5);
 
         final int result = numbers
