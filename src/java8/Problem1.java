@@ -2,6 +2,7 @@ package java8;
 
 import com.google.common.collect.Lists;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ public class Problem1
 {
     public static void main(String[] args)
     {
-        final List<Integer> numbers = Lists.newArrayList(1,2,3,4,5,6,7,8,9);
+        final List<Integer> numbers = generateNumbers(1, 1000);
         final List<Integer> criteria = Lists.newArrayList(3,5);
 
         final int result = numbers.stream()
@@ -31,5 +32,16 @@ public class Problem1
                 .filter(c -> i % c == 0)
                 .findAny()
                 .isPresent();
+    }
+
+    private static List<Integer> generateNumbers(int first, int last)
+    {
+        final List<Integer> numbers = new ArrayList<>();
+
+        for (int i = first; i <= last ; i++)
+        {
+            numbers.add(i);
+        }
+        return numbers;
     }
 }
