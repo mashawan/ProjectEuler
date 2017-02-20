@@ -2,8 +2,8 @@ package java8;
 
 import com.google.common.collect.Lists;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.
@@ -13,12 +13,15 @@ import java.util.List;
  */
 public class Problem1
 {
+    private static int firstNumber = 1;
+    private static final int lastNumber = 1000;
+
     public static void main(String[] args)
     {
-        final List<Integer> numbers = generateNumbers(1, 1000);
+        final Stream<Integer> numbers = generateNumbers();
         final List<Integer> criteria = Lists.newArrayList(3,5);
 
-        final int result = numbers.stream()
+        final int result = numbers
                 .filter(number -> isMultipleOfAnyCriteria(number, criteria))
                 .mapToInt(i -> i)
                 .sum();
@@ -34,14 +37,9 @@ public class Problem1
                 .isPresent();
     }
 
-    private static List<Integer> generateNumbers(int first, int last)
+    private static Stream<Integer> generateNumbers()
     {
-        final List<Integer> numbers = new ArrayList<>();
-
-        for (int i = first; i <= last ; i++)
-        {
-            numbers.add(i);
-        }
-        return numbers;
+        return Stream.generate(() -> firstNumber++)
+                .limit(lastNumber);
     }
 }
