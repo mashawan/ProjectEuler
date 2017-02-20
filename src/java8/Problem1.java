@@ -19,14 +19,14 @@ public class Problem1
         final List<Integer> criteria = Lists.newArrayList(3,5);
 
         final int result = numbers.stream()
-                .filter(number -> isMultipleOfAllCriteria(number, criteria))
+                .filter(number -> isMultipleOfAnyCriteria(number, criteria))
                 .mapToInt(i -> i)
                 .sum();
 
         System.out.println("The sum is " + result);
     }
 
-    private static boolean isMultipleOfAllCriteria(Integer i, List<Integer> criteria)
+    private static boolean isMultipleOfAnyCriteria(Integer i, List<Integer> criteria)
     {
         return criteria.stream()
                 .filter(c -> i % c == 0)
