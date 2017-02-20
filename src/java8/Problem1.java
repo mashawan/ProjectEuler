@@ -26,7 +26,7 @@ public class Problem1
                 .mapToInt(i -> i)
                 .sum();
 
-        System.out.println("The sum is " + result);
+        System.out.println("The sum is: " + result);
     }
 
     private static boolean isMultipleOfAnyCriteria(Integer number, List<Integer> allCriteria)
