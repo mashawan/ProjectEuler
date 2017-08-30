@@ -11,23 +11,31 @@ import java.util.stream.Stream;
  */
 public class Problem2
 {
-    private static long x = -1;
-    private static long y = 1;
+    private static long first = -1;
+    private static long next = 1;
 
     public static void main(String[] args)
     {
-        final Stream<Long> numbers = Stream.generate(Problem2::nextNumber)
-                .skip(2)
-                .limit(1000);
+        final Stream<Long> fibonacciStream = Stream.generate(Problem2::nextFibonacci)
+                .skip(2);
 
-        numbers.forEach(System.out::println);
+        fibonacciStream.forEach(i -> {
+            if (i > 100)
+            {
+                return;
+            }
+            else
+            {
+                System.out.println(i);
+            }
+        });
     }
 
-    private static long nextNumber()
+    private static long nextFibonacci()
     {
-        long result = x + y;
-        x = y;
-        y = result;
+        final long result = first + next;
+        first = next;
+        next = result;
         return result;
     }
 }
