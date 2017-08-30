@@ -7,4 +7,5 @@ package java8;
  */
 public class Problem3
 {
+
 }
