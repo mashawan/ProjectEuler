@@ -13,22 +13,32 @@ public class Problem2
 {
     private static long first = -1;
     private static long next = 1;
+    private static long sum =0;
 
     public static void main(String[] args)
     {
         final Stream<Long> fibonacciStream = Stream.generate(Problem2::nextFibonacci)
                 .skip(2);
 
-        fibonacciStream.forEach(i -> {
-            if (i > 100)
-            {
-                return;
-            }
-            else
-            {
-                System.out.println(i);
-            }
-        });
+        fibonacciStream
+            .allMatch(i -> {
+                if (i > 4000000)
+                {
+                    return false;
+                }
+                else
+                {
+                    adder(i);
+                    return true;
+                }
+            });
+
+        System.out.println("The answer is: " + sum);
+    }
+
+    private static void adder(long value)
+    {
+        sum += value;
     }
 
     private static long nextFibonacci()
